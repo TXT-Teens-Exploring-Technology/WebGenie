@@ -1,0 +1,107 @@
+h1{
+    background-color: #0A2342;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    font-size:30px;
+    font-weight: 225;
+}
+
+#x-mark{
+    position: absolute;
+    top: 10px;
+    right:16px; 
+    height: 30px;
+    width: 30px;
+    margin-top: 14px;
+}
+h2{
+    text-align: center;
+    padding: 10px;
+}
+h5{
+    text-align: center;
+}
+
+#background{
+    background-color: black;
+}
+#fileLoader{
+    position: absolute;
+    top: 5px;
+    right: 14px;
+    color: #0A2342;
+    display: none;
+}
+#button3{
+    margin-right: 5000px;
+    margin-left: 500px;
+}
+#images{
+    text-align: center;
+}
+input {
+    position:absolute;
+     top:0;
+     right:0;
+     border-radius: 30px;
+}
+#bdrop {
+    border-radius: 17px;
+    background-color: #0A2342;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 55px;
+    padding-left: 55px;
+    font-size: 20px;
+    font-weight: 250;
+    margin-top: 15em;
+}
+
+
+.dropdown {
+    text-align: center;
+    margin-bottom: 50px;
+}
+#dropdownMenuLink {
+    background-color: #0A2342;
+    border-radius: 0px 30px 30px 0px
+}
+.col-sm-1 {
+    background-color: #0A2342;
+    color: white;
+    border-radius: 30px 0px 0px 30px;
+    margin-bottom: 50px;
+    margin-left: 40px;
+    margin-right: 2px;
+    padding-top: 6px;
+    padding-left: 30px;
+}
+.row {
+    margin-right: -522px;
+    margin-left: -15px;
+    padding-left: 39%
+}
+label {
+    background-color: #2F6690;
+    color:white;
+    position:absolute;
+    top:0;
+    right:0;
+    border-radius: 25px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 235px;
+    margin-top: 25px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+input[type="file"] {
+    display: none;
+
+}
+#selectFile{
+    margin-left: 2em;
+}
