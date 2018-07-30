@@ -12,6 +12,8 @@ declare var google: any;
 })
 
 export class FindfilesComponent implements OnInit {
+  // Array that stores the files that are to be uploaded
+  newFiles = [];
   selectedFile: File;
   developerKey = 'AIzaSyCNkPdrZBAQQD_nF-4v-TXHH-ewLCfBuX0';
 
@@ -104,36 +106,26 @@ export class FindfilesComponent implements OnInit {
 
   // Uploads selected files to dropbox
   uploadFile() {
-    const fileInput = (<HTMLInputElement>document.getElementById('file-upload'));
-    console.log('fileInput =', fileInput);
-    const reader = new FileReader();
-    const file = fileInput.files[0];
 
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        const fileInfo = JSON.parse(xhr.response);
-        console.log(xhr.response);
-      }
-      else {
-        const errorMessage = xhr.response || 'Unable to upload file';
-        console.log(errorMessage);
-        // Upload failed. Do something here with the error.
-      }
-    };
-    // Sends files to dropbox
-    xhr.open('POST', 'https://content.dropboxapi.com/2/files/upload');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + '9lv2XtzrhpAAAAAAAAAAfs0f-58qeNC4NYvNZGDwRpkDxJjvfAOrEPlwJgT9O9CE');
-    xhr.setRequestHeader('Content-Type', 'application/octet-stream');
-    xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({
-      path: '/' + file.name,
-      mode: 'add',
-      autorename: true,
-      mute: false
-    }));
+    console.log(this.newFiles)
 
-    xhr.send(file);
+    for (let i in this.newFiles) {
+      let xhr = new XMLHttpRequest();
+      let file = this.newFiles[i]
+      console.log("sent ->", file);
+      xhr.open('POST', 'https://content.dropboxapi.com/2/files/upload');
+      xhr.setRequestHeader('Authorization', 'Bearer ' + '9lv2XtzrhpAAAAAAAAAAfs0f-58qeNC4NYvNZGDwRpkDxJjvfAOrEPlwJgT9O9CE');
+      xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+      xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({
+        path: '/' + file.name,
+        mode: 'add',
+        autorename: true,
+        mute: false
+      }));
 
+      xhr.send(file);
+    }
+    this.newFiles = [];
   }
 
   onFileChanged(event) {
@@ -148,22 +140,17 @@ export class FindfilesComponent implements OnInit {
     this._ApiService.sendFile(this.selectedFile);
 
   }
+  // Adds files to array, the array will be used to display the files that are going to be uploaded
+  addFile() {
+    const fileInput = (<HTMLInputElement>document.getElementById('file-upload'));
+    const file = fileInput.files[0];
+    console.log(file);
+    this.newFiles.push(file);
+
+
+  }
 
   ngOnInit() {
   }
 
 }
-// @Component({
-//  selector: 'app-root',
-//  templateUrl: './app.component.html',
-//  styleUrls: ['./app.component.css']
-// })
-// export class AppComponent {
-//  title = 'app';
- // The Browser API key obtained from the Google API Console.
-
-
-
-
-
-// }

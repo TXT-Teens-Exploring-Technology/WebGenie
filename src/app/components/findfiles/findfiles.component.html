@@ -2,13 +2,13 @@
   <div>
     <h1>Select files</h1>
       <label> Select File
-        <input type="file" id="file-upload" class="inputfile"/>
+        <input (change)="addFile()" type="file" id="file-upload" class="inputfile"/>
       </label>
-    <button id="Select File" style="position: absolute;top:0;right:0;margin-right:50px;border-radius:25px;margin-top:25px;background-color:#659AC3
-;color:white;border-color:#2F6690;padding: right 25px;padding-left:20px; text-align:center; " (click)="click()">Open Google Drive</button>
+    <button id="Select File" style="position: absolute;top:0;right:0;margin-right:50px;border-radius:25px;margin-top:25px;background-color:#2F6690
+;color:white;border-color:#2F6690;padding: right 25px;padding-left:20px; " (click)="click()">Open Google Drive</button>
   </div>
   <div id="background">
-    <a href="/">
+    <a href="/home">
       <img id="x-mark" src=".//../../../assets/xAsset.png" />
     </a>
   </div>
@@ -16,6 +16,14 @@
 <div id="images">
   <h5>Click to view all files</h5>
 </div>
+
+<div *ngFor="let file of newFiles">
+  <div>
+    <img src="http://www.iconhot.com/icon/png/devine/256/file-3.png"/>
+    <span>{{file.name}}</span>
+  </div>
+</div>
+
 <br>
 <div class="row">
   <div  class="col-sm-1">Convert </div>
@@ -36,3 +44,5 @@
 <div id="button3">
   <button id="bdrop" (click)="uploadFile()" type="button">Upload to Dropbox</button>
 </div>
+
+<script src="./findfiles.js"></script>
