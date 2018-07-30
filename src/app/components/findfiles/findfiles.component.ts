@@ -25,6 +25,9 @@ export class FindfilesComponent implements OnInit {
   oauthToken;
   constructor(private _ApiService: ApiService, private dataService: DataService) {
     console.log(this);
+
+    //  This prevented Dropbox from working ): please who over wrote this...explain to me why )):
+
     gapi.load('auth2', this.onAuthApiLoad);
     gapi.load('picker', () => {
       this.pickerApiLoaded = true;
@@ -94,9 +97,43 @@ export class FindfilesComponent implements OnInit {
     document.getElementById('result').innerHTML = message;
   }
   convert() {
-    console.log("Converting...")
+    console.log('Converting...');
     this.dataService.convertDocx('./essay.docx');
-    console.log("Completed Conversion :)");
+    console.log('Completed Conversion :)');
+  }
+
+  // Uploads selected files to dropbox
+  uploadFile() {
+    const fileInput = (<HTMLInputElement>document.getElementById('file-upload'));
+    console.log('fileInput =', fileInput);
+    const reader = new FileReader();
+    const file = fileInput.files[0];
+
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const fileInfo = JSON.parse(xhr.response);
+        console.log(xhr.response);
+      }
+      else {
+        const errorMessage = xhr.response || 'Unable to upload file';
+        console.log(errorMessage);
+        // Upload failed. Do something here with the error.
+      }
+    };
+    // Sends files to dropbox
+    xhr.open('POST', 'https://content.dropboxapi.com/2/files/upload');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + '9lv2XtzrhpAAAAAAAAAAfs0f-58qeNC4NYvNZGDwRpkDxJjvfAOrEPlwJgT9O9CE');
+    xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+    xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({
+      path: '/' + file.name,
+      mode: 'add',
+      autorename: true,
+      mute: false
+    }));
+
+    xhr.send(file);
+
   }
 
   onFileChanged(event) {

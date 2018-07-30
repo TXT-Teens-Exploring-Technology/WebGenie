@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
@@ -140,15 +139,4 @@
     "component-class-suffix": true,
     "directive-class-suffix": true
   }
-=======
-  "rules": {
-    "no-duplicate-variable": true,
-    "no-unused-variable": [
-      true
-    ]
-  },
-  "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
-  ]
->>>>>>> 415a393f03b9edc52f382da15e16f17ede0c42b5
 }
