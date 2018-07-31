@@ -20,18 +20,23 @@
   width: 300px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 9em;
+  margin-top: 17%;
 }
 
 img{
   text-align: center;
   animation-duration: 2.5s;
+  max-width: 100%;
 }
 
 .appLogo {
-  height: 75px;
+  height: 20%;
   float: left;
   margin-top: -25px;
+}
+.Words{
+  margin-top: 160px;
+  margin-bottom: -159px;
 }
 
 .text-center{
@@ -46,15 +51,18 @@ h1 {
   padding-top: 1em;
   font-size: 50px;
   animation-duration: 1s;
+  padding-bottom: 10px;
 }
 
 h2 {
   color: white;
   margin-left: 200px;
   margin-right: 200px;
-  font-size: 22px;
+  font-size: 180%;
   animation-duration: 1s;
+  
 }
+ 
 h3{
   color: white;
   font-size: 20px;
