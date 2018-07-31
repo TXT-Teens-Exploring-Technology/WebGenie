@@ -17,12 +17,16 @@
   <h5>Click to view all files</h5>
 </div>
 
-<div *ngFor="let file of newFiles">
-  <div>
-    <img src="http://www.iconhot.com/icon/png/devine/256/file-3.png"/>
-    <span>{{file.name}}</span>
+<div id="card" *ngFor="let file of newFiles">
+    <div>
+      <div id="cardBackground">
+      <img src="http://www.iconhot.com/icon/png/devine/256/file-3.png"/>
+      </div>
+      <div id="fileWords">
+      <span>{{file.name}}</span>
+      </div>
+    </div>
   </div>
-</div>
 
 <br>
 <div class="row">

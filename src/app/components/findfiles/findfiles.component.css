@@ -28,8 +28,43 @@ h5 {
     position: relative;
 }
 
+img {
+    margin: auto;
+    width: 50%;
+    vertical-align: middle;
+    border-style: none;
+    height: 125px;
+    margin-left: 25%;
+    margin-bottom: 8%;
+}
+
 #background{
     background-color: black;
+}
+
+#card {
+    float: left; 
+    display: inline; 
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+
+#cardBackground {
+    background-color: #C4C4C4;
+    margin-left: 3%;
+    border-radius: 20px;
+    width: 100%;
+}
+
+
+#fileWords {
+    background-color: #659AC3;
+    margin-left: 3%;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    margin-top: -7%;
 }
 
 #fileLoader{
