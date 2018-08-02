@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { DataService } from './data.service';
 
+
 declare var gapi: any;
 declare var google: any;
 
@@ -12,13 +13,16 @@ declare var google: any;
 })
 
 export class FindfilesComponent implements OnInit {
+
+  checker = true;
+
   // Array that stores the files that are to be uploaded
   newFiles = [];
   selectedFile: File;
-  developerKey = 'AIzaSyCNkPdrZBAQQD_nF-4v-TXHH-ewLCfBuX0';
+  developerKey = 'AIzaSyBx9JECeOWHJo-LcA5XIzcnQi9-OL3ReY8';
 
   // The Client ID obtained from the Google API Console. Replace with your own Client ID.
-  clientId = '680379437778-s2014e3vrnik75rsma9l6pij8i5vrut9.apps.googleusercontent.com';
+  clientId = '152132212955-3ojqbchc1q7q5ssq6p34rgnd57bun9bb.apps.googleusercontent.com';
 
   // Scope to use to access user's photos.
   scope = 'https://www.googleapis.com/auth/drive.file';
@@ -49,6 +53,7 @@ export class FindfilesComponent implements OnInit {
   }
 
   click() {
+    this.checker = false;
     gapi.auth2.authorize({
       client_id: this.clientId,
       scope: this.scope
@@ -142,6 +147,7 @@ export class FindfilesComponent implements OnInit {
   }
   // Adds files to array, the array will be used to display the files that are going to be uploaded
   addFile() {
+    this.checker = false;
     const fileInput = (<HTMLInputElement>document.getElementById('file-upload'));
     const file = fileInput.files[0];
     console.log(file);

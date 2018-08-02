@@ -145,7 +145,7 @@ input {
     /* margin-top: 5%;
     margin-left: 39%; */
     margin-left: 43%;
-    margin-top: 30%;
+    margin-top: 33%;
 }
 
 label {
@@ -172,3 +172,13 @@ input[type="file"] {
     margin-left: 2em;
     position: relative;
 }
+#AddFile {
+    height:10%;
+    width: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: .5;
+    margin-top: 15%
+}
+

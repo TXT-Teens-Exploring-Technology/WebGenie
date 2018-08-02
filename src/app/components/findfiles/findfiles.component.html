@@ -5,7 +5,7 @@
         <input (change)="addFile()" type="file" id="file-upload" class="inputfile"/>
       </label>
     <button id="Select File" style="position: absolute;top:0;right:0;margin-right:50px;border-radius:25px;margin-top:25px;background-color:#659AC3
-;color:white;border-color:#659AC3;;padding: right 25px;padding-left:20px; " (click)="click()">Open Google Drive</button>
+;color:white;border-color:#659AC3;;padding: right 25px;padding-left:20px; " onclick="" (click)="click()">Open Google Drive</button>
   </div>
   <div id="background">
     <a href="/">
@@ -16,6 +16,11 @@
 <div id="images">
   <h5>Click to view all files</h5>
 </div>
+
+<div>
+  <img *ngIf="checker" id="AddFile" src="./../../../assets/AddFile.png" />
+</div>
+
 
 <div id="card" *ngFor="let file of newFiles">
     <div>
