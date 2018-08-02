@@ -76,9 +76,6 @@ img {
 }
 
 #button3{
-    /* margin-right: 10%;
-    margin-left: 500px;
-    position: relative; */
     margin-right: 5%;
 }
 
@@ -105,12 +102,12 @@ input {
     margin-top: 1%;
     width: 185px;
     margin-left: 48%;
-        /* position: relative; */
+       
 }
 
 .dropdown {
     text-align: center;
-    /* margin-bottom: 50px; */
+   
 }
 
 #dropdownMenuLink {
@@ -127,23 +124,9 @@ input {
     padding-right: 10%;
     padding-left: 3.7%;
     margin-right: .2%
-
-    /* margin-bottom: 50px;
-    margin-left: 40px;
-    margin-right: 1px;
-    padding-top: 6px; */
 }
 
 .row {
-    /* margin-right: -522px;
-    margin-left: -15px;
-    padding-left: 39%;
-    position: relative; */
-    /* position: relative;
-    left: 25%;
-    right: 25%; */
-    /* margin-top: 5%;
-    margin-left: 39%; */
     margin-left: 43%;
     margin-top: 33%;
 }
@@ -182,3 +165,44 @@ input[type="file"] {
     margin-top: 15%
 }
 
+#blue {
+    padding: 20px;
+    background-color: #47a8f5;
+    color: white;
+}
+
+#closebtnb {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#closebtnb:hover {
+    color: black;
+}
+
+#green {
+    padding: 20px;
+    background-color: #6BBD6E;
+    color: white;
+}
+
+#closebtng {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#closebtnbg:hover {
+    color: black;
+}

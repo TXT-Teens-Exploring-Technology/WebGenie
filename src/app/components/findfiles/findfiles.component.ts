@@ -6,6 +6,7 @@ import { DataService } from './data.service';
 declare var gapi: any;
 declare var google: any;
 
+
 @Component({
   selector: 'app-findfiles',
   templateUrl: './findfiles.component.html',
@@ -15,9 +16,11 @@ declare var google: any;
 export class FindfilesComponent implements OnInit {
 
   checker = true;
-
+  triggered = false;
+  trigger = false;
   // Array that stores the files that are to be uploaded
-  newFiles = [];
+  newFiles: any[] = [];
+  selectedDoc;
   selectedFile: File;
   developerKey = 'AIzaSyBx9JECeOWHJo-LcA5XIzcnQi9-OL3ReY8';
 
@@ -32,7 +35,7 @@ export class FindfilesComponent implements OnInit {
   constructor(private _ApiService: ApiService, private dataService: DataService) {
     console.log(this);
 
-    //  This prevented Dropbox from working ): please who over wrote this...explain to me why )):
+    // This prevented Dropbox from working ): please who over wrote this...explain to me why )):
 
     gapi.load('auth2', this.onAuthApiLoad);
     gapi.load('picker', () => {
@@ -81,7 +84,9 @@ export class FindfilesComponent implements OnInit {
 
   // Create and render a Picker object for picking user Photos.
   createPicker() {
+    let newFiles = this.newFiles;
     if (this.pickerApiLoaded && this.oauthToken) {
+      console.log('arrayOfFiles', this.newFiles);
       const picker = new google.picker.PickerBuilder().
         addView(google.picker.ViewId.DOCS).
         setOAuthToken(this.oauthToken).
@@ -95,24 +100,34 @@ export class FindfilesComponent implements OnInit {
   // A simple callback implementation.
   pickerCallback(data) {
     console.log(data);
+    console.log(this.newFiles);
     let url = 'nothing';
     if (data[google.picker.Response.ACTION] === google.picker.Action.PICKED) {
       const doc = data[google.picker.Response.DOCUMENTS][0];
+      // This is the name of the doc, all we need to do now i push it too the newFiles array which for some reason is undefined....
+      console.log(doc.name)
       url = doc[google.picker.Document.URL];
+
     }
-    const message = 'You picked: ' + url;
-    document.getElementById('result').innerHTML = message;
   }
+
   convert() {
+    this.trigger = true;
     console.log('Converting...');
-    this.dataService.convertDocx('./essay.docx');
+    this.dataService.convertDocx({ path: './Script For Demo Day.docx' })
+      .subscribe(
+        data => console.log(data),
+        err => console.log(err)
+      );
     console.log('Completed Conversion :)');
   }
+
 
   // Uploads selected files to dropbox
   uploadFile() {
 
-    console.log(this.newFiles)
+    console.log(this.newFiles);
+    this.triggered = true;
 
     for (let i in this.newFiles) {
       let xhr = new XMLHttpRequest();
@@ -143,7 +158,6 @@ export class FindfilesComponent implements OnInit {
   }
   upload() {
     this._ApiService.sendFile(this.selectedFile);
-
   }
   // Adds files to array, the array will be used to display the files that are going to be uploaded
   addFile() {
@@ -152,11 +166,16 @@ export class FindfilesComponent implements OnInit {
     const file = fileInput.files[0];
     console.log(file);
     this.newFiles.push(file);
+  }
 
-
+  addFileFromDrive(filename) {
+    console.log(filename);
+    let fileObj = {
+      name: filename
+    };
+    this.newFiles.push(fileObj);
   }
 
   ngOnInit() {
   }
-
 }

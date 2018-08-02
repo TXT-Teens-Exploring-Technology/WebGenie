@@ -1,12 +1,24 @@
 <div>
   <div>
     <h1>Select files</h1>
-      <label> Select File
-        <input (change)="addFile()" type="file" id="file-upload" class="inputfile"/>
-      </label>
+    <label> Select File
+      <input (change)="addFile()" type="file" id="file-upload" class="inputfile" />
+    </label>
+    <div *ngIf="triggered" class="alert" id="blue">
+      <span class="closebtn" id="closebtnb" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>Success!</strong> Your files have been uploaded to DropBox!
+    </div>
+
+    <div *ngIf="trigger" class="alert" id="green">
+      <span class="closebtn" id="closebtng" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>Success!</strong> Your files have been converted!
+    </div>
+
     <button id="Select File" style="position: absolute;top:0;right:0;margin-right:50px;border-radius:25px;margin-top:25px;background-color:#659AC3
-;color:white;border-color:#659AC3;;padding: right 25px;padding-left:20px; " onclick="" (click)="click()">Open Google Drive</button>
+;color:white;border-color:#659AC3;;padding: right 25px;padding-left:20px; " (click)="click()">Open Google Drive</button>
   </div>
+
+
   <div id="background">
     <a href="/">
       <img id="x-mark" src=".//../../../assets/xAsset.png" />
@@ -14,7 +26,7 @@
   </div>
 </div>
 <div id="images">
-  <h5>Click to view all files</h5>
+
 </div>
 
 <div>
@@ -23,15 +35,15 @@
 
 
 <div id="card" *ngFor="let file of newFiles">
-    <div>
-      <div id="cardBackground">
-      <img src="http://www.iconhot.com/icon/png/devine/256/file-3.png"/>
-      </div>
-      <div id="fileWords">
+  <div>
+    <div id="cardBackground">
+      <img src="http://www.iconhot.com/icon/png/devine/256/file-3.png" />
+    </div>
+    <div id="fileWords">
       <span>{{file.name}}</span>
-      </div>
     </div>
   </div>
+</div>
 
 <br>
 <div class="row">
@@ -51,7 +63,7 @@
 </div>
 
 <div id="button3">
-  <button id="bdrop" (click)="uploadFile()" type="button">Upload to Dropbox</button>
+  <button id="bdrop" onclick="myFunction()" (click)="uploadFile()" type="button">Upload to Dropbox</button>
 </div>
 
 <script src="./findfiles.js"></script>
